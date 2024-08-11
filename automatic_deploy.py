@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from config import host, user, realm, token_name, token_secret, verify_ssl
 from fqdn import FQDN
 from proxmoxer import ProxmoxAPI
 from proxmoxer.tools import Tasks
+from tomllib import load as loadtoml
 import argparse
 
 parser = argparse.ArgumentParser(description='This script copys the debian template, creates a VM, registers IPs in NETVS and sets CNAME in hosting.de')
@@ -28,6 +28,16 @@ if FQDN(vm_fqdn).is_valid is False:
 if FQDN(hosting_de_cname).is_valid is False:
     print("Given CNAME is not a valid FQDN")
     exit(0)
+
+with open("config.toml", "rb") as f:
+    data = loadtoml(f)
+
+host = data['host']
+user = data['user']
+realm = data['realm']
+token_name = data['token_name']
+token_secret = data['token_secret']
+verify_ssl = data['verify_ssl']
 
 proxmox_api = ProxmoxAPI(
     host=host,

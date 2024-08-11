@@ -7,9 +7,9 @@ It clones a template, configures DNS and deploys a basic ansible playbook.
 
 1. 🚗 Copy the config file
 ```
-cp config.example.py config.py
+cp config.example.toml config.toml
 ```
-2. 🧑🏽‍💻 Set your variables accordingly in `config.py`
+2. 🧑🏽‍💻 Set your variables accordingly in `config.toml`
 3. 🧐 For instructions on how to use PAD check the inbuilt help function
 ```
 ./automatic_deploy.py -h
