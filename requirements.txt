@@ -1,0 +1,4 @@
+# Install requirements with `pip install -r requests.txt`
+fqdn
+proxmoxer
+requests
